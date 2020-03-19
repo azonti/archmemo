@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(cat archmemo.sh | sed -nE -e "s/^(pacstrap \/mnt|((sudo )?pacman|yay) -S) (.+)$/\4/p" | tr ' ' '\n'; echo yay) | sort
