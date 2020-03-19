@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -A PACKAGE_GROUP=(
+  ["thereward"]="texlive-most xfce4 fcitx5-im"
+  ["macbookpro"]="texlive-most xfce4 fcitx5-im"
+)
+
+function parse {
+  cat - | tr ' ' '\n'
+}
+
+function npm_parse {
+  cat - | tr ' ' '\n' | awk '{ print "npm/"$1 }'
+}
+
+EXPECTED=$( ( (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(pacstrap \/mnt|(sudo )?pacman -S|yay -S) (.+)$/\3/p"; echo yay) | parse; (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(sudo )?npm install -g (.+)$/\2/p"; echo node-gyp nopt npm semver corepack) | npm_parse ) | sort )
+ACTUAL=$( comm -23 <( ( (yay -Qqe; echo ${PACKAGE_GROUP[$HOSTNAME]}) | parse; npm ls -g --parseable --depth=0 2>/dev/null | sed -nE -e "s/^\/usr\/lib\/node_modules\/(.+)$/\1/p" | npm_parse ) | sort ) <( ( yay -Qqeg ${PACKAGE_GROUP[$HOSTNAME]} | parse ) | sort ) )
+
+diff <(echo "$EXPECTED") <(echo "$ACTUAL")
