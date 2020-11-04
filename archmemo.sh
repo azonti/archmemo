@@ -130,7 +130,7 @@ sudo systemctl enable docker
 yay -S docker-compose
 
 useradd -m -G wheel -s /bin/bash azon
-visudo
+EDITOR=vim visudo
 passwd azon
 passwd -l root
 
