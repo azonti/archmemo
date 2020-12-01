@@ -267,7 +267,7 @@ yay -S fcitx-im fcitx-mozc fcitx-configtool
 # edit ~/.profile.d
 
 yay -S cups
-sudo systemctl enable org.cups.cupsd
+sudo systemctl enable cups
 yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds
 yay -S brother-mfc-l9570cdw
 
