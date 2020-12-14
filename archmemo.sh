@@ -42,7 +42,7 @@ fallocate -l 8G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dkms rtl88xxau-aircrack-dkms-git linux-headers dosfstools btrfs-progs wget vim man-db man-pages efibootmgr intel-ucode pulseaudio pulseaudio-alsa
+pacstrap /mnt base base-devel linux linux-firmware dkms rtl88xxau-aircrack-dkms-git linux-headers dosfstools btrfs-progs wget vim man-db man-pages intel-ucode pulseaudio pulseaudio-alsa
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
