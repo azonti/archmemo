@@ -124,10 +124,16 @@ systemctl enable tlp
 systemctl mask systemd-rfkill
 systemctl mask systemd-rfkill.socket
 
-yay -S docker
+pacman -S docker
 sudo systemctl enable docker
 
-yay -S docker-compose
+pacman -S docker-compose
+
+pacman -S tor
+sudo systemctl enable tor
+
+pacman -S proxychains
+# edit /etc/proxychains.conf
 
 useradd -m -G wheel -s /bin/bash azon
 EDITOR=vim visudo
