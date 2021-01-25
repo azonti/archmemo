@@ -42,7 +42,7 @@ fallocate -l 8G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dkms rtl88xxau-aircrack-dkms-git linux-headers dosfstools btrfs-progs wget vim man-db man-pages intel-ucode pulseaudio pulseaudio-alsa
+pacstrap /mnt base base-devel linux linux-firmware dkms rtl88xxau-aircrack-dkms-git linux-headers dosfstools btrfs-progs wget vim man-db man-pages intel-ucode
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
@@ -125,12 +125,12 @@ systemctl mask systemd-rfkill
 systemctl mask systemd-rfkill.socket
 
 pacman -S docker
-sudo systemctl enable docker
+systemctl enable docker
 
 pacman -S docker-compose
 
 pacman -S tor
-sudo systemctl enable tor
+systemctl enable tor
 
 pacman -S proxychains
 # edit /etc/proxychains.conf
@@ -159,6 +159,9 @@ sudo pacman -S python-pynvim
 sudo pacman -S openssh
 # edit ~/.ssh/config
 # edit ~/.profile.d
+
+sudo pacman -S android-udev android-tools
+sudo gpasswd -a azon adbusers
 
 # ------------------------------------------------------------------------------
 
@@ -230,9 +233,6 @@ yay -S bind
 
 yay -S clang
 
-yay -S android-udev android-tools
-sudo gpasswd -a azon adbusers
-
 yay -S dex2jar
 
 yay -S youtube-dl
@@ -256,6 +256,8 @@ sudo systemctl enable lightdm.service
 yay -S xorg-server
 # edit /etc/X11/xorg.conf.d
 # edit ~/.xprofile
+
+yay -S pulseaudio pulseaudio-alsa
 
 yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp numix-gtk-theme gtk-engine-murrine qt5-styleplugins
 # edit ~/.profile.d
@@ -284,6 +286,8 @@ yay -S virtualbox virtualbox-host-modules-arch
 sudo gpasswd -a azon vboxusers
 
 # ------------------------------------------------------------------------------
+
+# PulseAudio configulation
 
 # Xfce configulation
 
