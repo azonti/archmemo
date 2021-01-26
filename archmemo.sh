@@ -132,7 +132,7 @@ pacman -S docker-compose
 pacman -S tor
 systemctl enable tor
 
-pacman -S proxychains
+pacman -S proxychains-ng
 # edit /etc/proxychains.conf
 
 useradd -m -G wheel -s /bin/bash azon
