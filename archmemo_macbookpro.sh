@@ -1,6 +1,5 @@
-mkfs.fat -F32 /dev/nvme0n1p1
-cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random --label luks /dev/nvme0n1p2
-cryptsetup luksOpen /dev/nvme0n1p2 btrfs
+cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random --label luks /dev/sda3
+cryptsetup luksOpen /dev/sda3 btrfs
 mkfs.btrfs --label btrfs /dev/mapper/btrfs
 mount /dev/mapper/btrfs /mnt
 btrfs subvolume create /mnt/@
@@ -16,8 +15,9 @@ umount /mnt
 
 mount -o compress=zstd,subvol=/@ /dev/mapper/btrfs /mnt
 mkdir -p /mnt/.esp
-mount /dev/nvme0n1p1 /mnt/.esp
+mount /dev/sda1 /mnt/.esp
 mkdir -p /mnt/.esp/EFI/arch
+mkdir -p /mnt/boot
 mount --bind /mnt/.esp/EFI/arch /mnt/boot
 mkdir -p /mnt/var/cache
 mount -o compress=zstd,subvol=/@cache_system /dev/mapper/btrfs /mnt/var/cache
@@ -38,19 +38,16 @@ mount -o compress=zstd,subvol=/@swap /dev/mapper/btrfs /mnt/.swap
 touch /mnt/.swap/swap
 chattr +C /mnt/.swap/swap
 btrfs property set /mnt/.swap/swap compression none
-fallocate -l 8G /mnt/.swap/swap
+fallocate -l 16G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dkms rtl88xxau-aircrack-dkms-git linux-headers dosfstools btrfs-progs wget vim man-db man-pages intel-ucode
+pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs vim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
 
 # ------------------------------------------------------------------------------
-
-echo blacklist pcspkr > /etc/modprobe.d/nobeep.conf
-echo blacklist ath10k_pci > /etc/modprobe.d/nointwlan.conf
 
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 hwclock --systohc --utc
@@ -61,45 +58,38 @@ locale-gen
 echo LANG=ja_JP.UTF-8 > /etc/locale.conf
 echo KEYMAP=jp106 > /etc/vconsole.conf
 
-echo mynewgear > /etc/hostname
-
-sed -i -E -e "s/#(PACKAGER)=\"[^\"]+\"/\1=\"Shu Takayama <syu.takayama@gmail.com>\"/" /etc/makepkg.conf
-
-sed -i -E -e "s/#(\[multilib\])/\1/" -e "/\[multilib\]/{n;s/#(.+)/\1/}" /etc/pacman.conf
+echo macbookpro > /etc/hostname
 
 pacman -S crda
 sed -i -E -e "s/#(WIRELESS_REGDOM=\"JP\")/\1/" /etc/conf.d/wireless-regdom
 
 pacman -S networkmanager
 # edit /etc/NetworkManager/conf.d
-# edit /etc/NetworkManager/dispatcher.d
-sed -i -E -e "s/#(DNSSEC=no)/\1/" /etc/systemd/resolved.conf
-ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 systemctl enable NetworkManager
-systemctl enable systemd-resolved
 
-pacman -S bluez
-systemctl enable bluetooth
-
-sed -i -E -e "s/HOOKS=\(base udev autodetect modconf block filesystems keyboard fsck\)/HOOKS=\(base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
+sed -i -E -e "s/HOOKS=\(base udev autodetect modconf block filesystems keyboard fsck\)/HOOKS=\(base udev autodetect modconf block keyboard keymap encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
 mkinitcpio -P
 
 passwd
 
+pacman -S intel-ucode
 bootctl --path=.esp install
 cat > /.esp/loader/entries/arch.conf << EOF
-title	Arch Linux
-linux	/EFI/arch/vmlinuz-linux
-initrd	/EFI/arch/intel-ucode.img
-initrd	/EFI/arch/initramfs-linux.img
-options	root=LABEL=btrfs rootflags=subvol=/@ rw resume=LABEL=btrfs resume_offset=16400 cryptdevice=LABEL=luks:btrfs pci=noaer
+title Arch Linux
+linux /EFI/arch/vmlinuz-linux
+initrd /EFI/arch/intel-ucode.img
+initrd /EFI/arch/initramfs-linux.img
+options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs
 EOF
 
 # ------------------------------------------------------------------------------
 
 timedatectl set-ntp true
 
-localectl set-x11-keymap jp sun_type7_jp_usb OADG109A
+sed -i -E -e "s/#(\[multilib\])/\1/" -e "/\[multilib\]/{n;s/#(.+)/\1/}" /etc/pacman.conf
+pacman -Sy
+
+sed -i -E -e "s/#(PACKAGER)=\"[^\"]+\"/\1=\"Shu Takayama <syu.takayama@gmail.com>\"/" /etc/makepkg.conf
 
 pacman -S snapper
 umount /.snapshots
@@ -117,12 +107,12 @@ systemctl enable snapper-timeline.timer
 systemctl enable snapper-cleanup.timer
 
 pacman -S tlp ethtool lsb-release smartmontools x86_energy_perf_policy
-sed -i -E -e "s/#(SOUND_POWER_SAVE_ON_AC)=[01]/\1=0/" /etc/tlp.conf
-sed -i -E -e "s/#(SOUND_POWER_SAVE_ON_BAT)=[01]/\1=0/" /etc/tlp.conf
-sed -i -E -e "s/#(SOUND_POWER_SAVE_CONTROLLER)=[NY]/\1=N/" /etc/tlp.conf
 systemctl enable tlp
 systemctl mask systemd-rfkill
 systemctl mask systemd-rfkill.socket
+
+pacman -S bluez
+systemctl enable bluetooth
 
 pacman -S docker
 systemctl enable docker
@@ -133,12 +123,19 @@ pacman -S tor
 systemctl enable tor
 
 pacman -S proxychains-ng
-# edit /etc/proxychains.conf
+sed -i -E -e "s/socks4 \t127\.0\.0\.1 9050/socks5 \t127.0.0.1 9050/" /etc/proxychains.conf
 
 useradd -m -G wheel -s /bin/bash azon
+cp -R /etc/skel/. /home/azon
+chown -R azon:azon /home/azon
 EDITOR=vim visudo
 passwd azon
 passwd -l root
+
+sed -i -E -e "s/#(DNSSEC=no)/\1/" /etc/systemd/resolved.conf
+# edit /etc/NetworkManager/conf.d
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+systemctl enable systemd-resolved
 
 # ------------------------------------------------------------------------------
 
@@ -163,11 +160,12 @@ sudo pacman -S openssh
 sudo pacman -S android-udev android-tools
 sudo gpasswd -a azon adbusers
 
+sudo pacman -S bash-completion
+
 # ------------------------------------------------------------------------------
 
 mkdir ~/.bashrc.d
 # edit ~/.bashrc
-source ~/.bashrc
 
 sudo pacman -S git
 # edit ~/.gitconfig
@@ -180,12 +178,6 @@ makepkg -sri
 popd
 rm -rf yay
 popd
-# edit ~/.bashrc.d
-source ~/.bashrc
-
-yay -S thefuck
-# edit ~/.bashrc.d
-source ~/.bashrc
 
 yay -S xdg-utils
 # edit ~/.bashrc.d
@@ -201,61 +193,16 @@ yay -S tmux
 yay -S texlive-most texlive-langjapanese
 # edit ~/.latexmkrc
 
-yay -S bash-completion
-
-yay -S unarchiver
-
-yay -S zip
-
-yay -S gnu-netcat
-
-yay -S mtr
-
-yay -S jdk-openjdk jdk11-openjdk
-
-yay -S gopls
-
-yay -S php
-
-yay -S jq
-
-sudo npm install -g tldr
-
-yay -S namcap
-
-yay -S gnuplot
-
-yay -S go-ipfs
-
-yay -S hashcash
-
-yay -S bind
-
-yay -S clang
-
-yay -S dex2jar
-
-yay -S youtube-dl
-
-sudo npm install -g hexo-cli
-
-pushd ~/repos
-git clone git@github.com:atcoder/ac-library.git
-pushd ac-library
-git checkout production
-popd
-popd
-sudo ln -s ~/repos/ac-library/atcoder /usr/local/include/
-
 # edit ~/.bashrc
 source ~/.bashrc
 
 yay -S lightdm lightdm-gtk-greeter
-sudo systemctl enable lightdm.service
+sudo systemctl enable lightdm
 
 yay -S xorg-server
-# edit /etc/X11/xorg.conf.d
 # edit ~/.xprofile
+
+localectl set-x11-keymap jp sun_type7_jp_usb mac
 
 yay -S pulseaudio pulseaudio-alsa
 
@@ -263,9 +210,8 @@ yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4
 # edit ~/.profile.d
 
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-cica
-# edit /etc/fonts/fonts.conf
+# edit /etc/fonts/local.conf
 sudo ln -s /etc/fonts/conf.avail/09-autohint-if-no-hinting.conf /etc/fonts/conf.d/
-sudo ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/
 sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 sudo ln -s /etc/fonts/conf.avail/65-khmer.conf /etc/fonts/conf.d/
@@ -276,7 +222,6 @@ yay -S fcitx-im fcitx-mozc fcitx-configtool
 
 yay -S cups
 sudo systemctl enable cups
-yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds
 yay -S brother-mfc-l9570cdw
 
 yay -S wireshark-qt
@@ -286,55 +231,3 @@ yay -S virtualbox virtualbox-host-modules-arch
 sudo gpasswd -a azon vboxusers
 
 # ------------------------------------------------------------------------------
-
-# PulseAudio configulation
-
-# Xfce configulation
-
-# Fcitx configulation
-
-# CUPS configulation
-
-yay -S chromium chromium-widevine
-
-yay -S firefox firefox-i18n-ja
-
-yay -S tor-browser
-
-yay -S sylpheed
-ln -s /usr/share/applications/sylpheed.desktop ~/.config/autostart/
-
-yay -S atomic-tweetdeck
-
-yay -S slack-desktop
-
-yay -S zoom
-ln -s /usr/share/applications/Zoom.desktop ~/.config/autostart/
-
-yay -S discord
-
-yay -S f5vpn
-
-yay -S transmission-gtk
-
-yay -S evince-no-gnome
-
-yay -S gimp
-
-yay -S eclipse-java-bin
-
-yay -S wine wine-mono wine-gecko winetricks
-yay  -S --asdeps lib32-libpulse
-
-yay -S jd-gui-bin
-
-yay -S slackcat
-
-yay -S zotero
-
-sudo npm install -g truffle
-yay -S ganache-bin
-
-yay -S electrum
-
-yay -S obs-studio
