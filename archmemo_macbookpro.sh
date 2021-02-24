@@ -202,7 +202,7 @@ sudo systemctl enable lightdm
 yay -S xorg-server
 # edit ~/.xprofile
 
-localectl set-x11-keymap jp sun_type7_jp_usb mac
+localectl set-x11-keymap jp sun_type7_jp_usb
 
 yay -S pulseaudio pulseaudio-alsa
 
@@ -231,3 +231,15 @@ yay -S virtualbox virtualbox-host-modules-arch
 sudo gpasswd -a azon vboxusers
 
 # ------------------------------------------------------------------------------
+
+# PulseAudio configulation
+
+# Xfce configulation
+
+# Fcitx configulation
+
+# CUPS configulation
+
+yay -S chromium chromium-widevine
+
+yay -S zoom

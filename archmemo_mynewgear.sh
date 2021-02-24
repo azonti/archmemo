@@ -256,7 +256,7 @@ yay -S xorg-server
 # edit /etc/X11/xorg.conf.d
 # edit ~/.xprofile
 
-localectl set-x11-keymap jp sun_type7_jp_usb OADG109A
+localectl set-x11-keymap jp sun_type7_jp_usb
 
 yay -S pulseaudio pulseaudio-alsa
 
@@ -308,7 +308,6 @@ yay -S atomic-tweetdeck
 yay -S slack-desktop
 
 yay -S zoom
-ln -s /usr/share/applications/Zoom.desktop ~/.config/autostart/
 
 yay -S discord
 
@@ -323,7 +322,7 @@ yay -S gimp
 yay -S eclipse-java-bin
 
 yay -S wine wine-mono wine-gecko winetricks
-yay  -S --asdeps lib32-libpulse
+yay -S --asdeps lib32-libpulse
 
 yay -S jd-gui-bin
 

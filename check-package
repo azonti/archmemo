@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -A PACKAGE_GROUP=(
+  ["mynewgear"]="base-devel texlive-most xfce4 fcitx-im"
+  ["macbookpro"]="base-devel texlive-most xfce4 fcitx-im"
+)
+
+EXPECTED=$( (cat archmemo_$1.sh | sed -nE -e "s/^((pacstrap \/mnt)|((sudo )?pacman -S)|(yay -S)) (.+)$/\6/p" | sed -E -e "/^--asdeps/d"; echo yay) | tr ' ' '\n' | sort )
+ACTUAL=$( comm -23 <( (yay -Qqe; echo ${PACKAGE_GROUP[$1]}) | tr ' ' '\n' | sort ) <( yay -Qqeg ${PACKAGE_GROUP[$1]} | sort ) )
+
+diff <( echo $EXPECTED | tr ' ' '\n' ) <( echo $ACTUAL | tr ' ' '\n' )
