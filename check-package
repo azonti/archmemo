@@ -9,7 +9,7 @@ function parse {
   cat - | tr ' ' '\n' | sort
 }
 
-EXPECTED=$( (cat archmemo_$1.sh | sed -nE -e "s/^(pacstrap \/mnt|(sudo )?pacman -S|yay -S) (.+)$/\3/p" -e "s/^(sudo )?npm install -g (.+)$/npm\/\2/p" | sed -E -e "/^--asdeps/d"; echo yay npm/npm npm/node-gyp) | parse)
+EXPECTED=$( (cat archmemo_$1.sh | sed -nE -e "s/^(pacstrap \/mnt|(sudo )?pacman -S|yay -S) (.+)$/\3/p" -e "s/^(sudo )?npm install -g (.+)$/npm\/\2/p" | sed -E -e "/^--asdeps/d"; echo yay npm/npm npm/node-gyp npm/semver) | parse)
 ACTUAL=$(comm -23 <( (yay -Qqe; npm ls -g --parseable --depth=0 2>/dev/null | sed -nE -e "s/^\/usr\/lib\/node_modules\/(.+)$/npm\/\1/p"; echo ${PACKAGE_GROUP[$1]}) | parse) <(yay -Qqeg ${PACKAGE_GROUP[$1]} | parse))
 
 diff <(echo "$EXPECTED") <(echo "$ACTUAL")

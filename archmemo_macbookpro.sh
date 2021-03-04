@@ -42,7 +42,7 @@ fallocate -l 16G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs vim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs dkms linux-headers bcwc-pcie-git vim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
@@ -235,11 +235,61 @@ sudo gpasswd -a azon vboxusers
 # PulseAudio configulation
 
 # Xfce configulation
+## 個人設定/Xfce ターミナル設定/一般/スクロール/スクロールバー
+## 個人設定/Xfce ターミナル設定/外観/フォント/F
+## 個人設定/Xfce ターミナル設定/外観/背景
+## 個人設定/Xfce ターミナル設定/外観/新しいウィンドウを開く場合/M
+## 個人設定/ウィンドウマネージャー (詳細)/アクセシビリティ/L
+## 個人設定/ウィンドウマネージャー (詳細)/ワークスペース/M
+## 個人設定/ウィンドウマネージャー (詳細)/コンポジット処理/D
+## 個人設定/デスクトップ/背景/デスクトップの壁紙
+## 個人設定/デスクトップ/メニュー/デスクトップメニュー/D
+## 個人設定/デスクトップ/メニュー/ウィンドウリストメニュー/W
+## 個人設定/デスクトップ/アイコン/外観/アイコンタイプ
+## 個人設定/パネル/パネル1/外観/全般/ダークモード
+## 個人設定/パネル/パネル1/アイテム/アプリケーションメニュー/外観/E
+## 個人設定/パネル/パネル1/アイテム/アプリケーションメニュー/外観/S
+## 個人設定/パネル/パネル1/アイテム/ウィンドウボタン/外観/並び替え順
+## 個人設定/パネル/パネル1/アイテム/ウィンドウボタン/振る舞い/ウィンドウのグループ化
+## 個人設定/パネル/パネル1/アイテム/Clipman
+## 個人設定/パネル/パネル1/アイテム/電源管理プラグイン
+## 個人設定/パネル/パネル1/アイテム/時計/外観/ツールチップの形式
+## 個人設定/パネル/パネル1/アイテム/時計/時計のオプション/表示形式
+## 個人設定/パネル/パネル1/アイテム/アクションボタン/アクション
+## 個人設定/パネル/パネル2
+## 個人設定/外観/フォント/レンダリング
+## 個人設定/外観/設定/ウィンドウ拡大縮小
+## ハードウェア/ディスプレイ/全般/2/スケール
+## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/プロファイル
+## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/新しくディスプレイが接続されたとき設定する
+## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/新しくディスプレイが接続されたときプロファイルを自動的に有効にする
+## ハードウェア/電源管理/一般/ボタン
+## ハードウェア/電源管理/システム
+## ハードウェア/電源管理/ディスプレイ
+## ハードウェア/電源管理/セキュリティ
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -s false
+## システム/LightDM GTK+ Greeterの設定/外観/テーマ
+## システム/LightDM GTK+ Greeterの設定/外観/アイコン
+## azon のログアウト/S
 
 # Fcitx configulation
+## 全体の設定/ホットキー/入力メソッドのオンオフ
+## 全体の設定/ホットキー/入力メソッドをオンに
+## 全体の設定/ホットキー/入力メソッドをオフに
+## Mozc プロパティ/一般/基本設定/句読点
 
 # CUPS configulation
 
-yay -S chromium chromium-widevine
+yay -S google-chrome
+# Xfce configulation
+## システム/デフォルトアプリケーション/インターネット/ウェブブラウザー
+
+yay -S tor-browser
+
+yay -S slack-desktop
 
 yay -S zoom
+
+yay -S discord
+
+yay -S gimp
