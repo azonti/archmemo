@@ -193,6 +193,8 @@ yay -S tmux
 yay -S texlive-most texlive-langjapanese
 # edit ~/.latexmkrc
 
+yay -S mtr
+
 # edit ~/.bashrc
 source ~/.bashrc
 
@@ -291,5 +293,7 @@ yay -S slack-desktop
 yay -S zoom
 
 yay -S discord
+
+yay -S evince-no-gnome
 
 yay -S gimp
