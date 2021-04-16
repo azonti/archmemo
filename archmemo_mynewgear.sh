@@ -232,6 +232,8 @@ yay -S clang
 
 yay -S dex2jar
 
+yay -S ffmpeg
+
 yay -S youtube-dl
 
 sudo npm install -g hexo-cli
@@ -352,6 +354,9 @@ yay -S gimp
 
 yay -S eclipse-java-bin
 
+yay -S intellij-idea-community-edition
+# IntelliJ IDEA configulation
+
 yay -S wine wine-mono wine-gecko winetricks
 yay -S --asdeps lib32-libpulse
 
@@ -367,3 +372,5 @@ yay -S ganache-bin
 yay -S electrum
 
 yay -S obs-studio
+
+yay -S coqide

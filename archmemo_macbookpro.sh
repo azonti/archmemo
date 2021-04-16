@@ -193,7 +193,15 @@ yay -S tmux
 yay -S texlive-most texlive-langjapanese
 # edit ~/.latexmkrc
 
+yay -S unarchiver
+
 yay -S mtr
+
+yay -S jq
+
+yay -S bind
+
+yay -S ffmpeg
 
 # edit ~/.bashrc
 source ~/.bashrc
@@ -294,6 +302,13 @@ yay -S zoom
 
 yay -S discord
 
+yay -S f5vpn
+
 yay -S evince-no-gnome
 
 yay -S gimp
+
+yay -S intellij-idea-community-edition
+# IntelliJ IDEA configulation
+
+yay -S coqide
