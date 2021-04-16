@@ -43,7 +43,7 @@ fallocate -l 8G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs dkms linux-headers rtl88xxau-aircrack-dkms-git vim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs vim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
@@ -84,7 +84,6 @@ options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs pci
 EOF
 
 echo blacklist pcspkr > /etc/modprobe.d/nobeep.conf
-echo blacklist ath10k_pci > /etc/modprobe.d/nointwlan.conf
 
 # ------------------------------------------------------------------------------
 
