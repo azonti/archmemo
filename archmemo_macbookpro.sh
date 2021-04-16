@@ -195,13 +195,29 @@ yay -S texlive-most texlive-langjapanese
 
 yay -S unarchiver
 
+yay -S zip
+
+yay -S gnu-netcat
+
 yay -S mtr
 
+yay -S clang
+
+yay -S gopls
+
 yay -S jq
+
+yay -S namcap
+
+yay -S gnuplot
 
 yay -S bind
 
 yay -S ffmpeg
+
+yay -S youtube-dl
+
+sudo npm install -g hexo-cli
 
 # edit ~/.bashrc
 source ~/.bashrc
@@ -304,11 +320,19 @@ yay -S discord
 
 yay -S f5vpn
 
+yay -S transmission-gtk
+
 yay -S evince-no-gnome
 
 yay -S gimp
 
 yay -S intellij-idea-community-edition
 # IntelliJ IDEA configulation
+
+yay -S slackcat
+
+yay -S zotero
+
+yay -S obs-studio
 
 yay -S coqide

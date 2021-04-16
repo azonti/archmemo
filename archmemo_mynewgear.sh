@@ -208,43 +208,23 @@ yay -S gnu-netcat
 
 yay -S mtr
 
-yay -S jdk-openjdk jdk11-openjdk
+yay -S clang
 
 yay -S gopls
 
-yay -S php
-
 yay -S jq
-
-sudo npm install -g tldr
 
 yay -S namcap
 
 yay -S gnuplot
 
-yay -S go-ipfs
-
-yay -S hashcash
-
 yay -S bind
-
-yay -S clang
-
-yay -S dex2jar
 
 yay -S ffmpeg
 
 yay -S youtube-dl
 
 sudo npm install -g hexo-cli
-
-pushd ~/repos
-git clone git@github.com:atcoder/ac-library.git
-pushd ac-library
-git checkout production
-popd
-popd
-sudo ln -s ~/repos/ac-library/atcoder /usr/local/include/
 
 # edit ~/.bashrc
 source ~/.bashrc
@@ -334,8 +314,6 @@ yay -S google-chrome
 # Xfce configulation
 ## システム/デフォルトアプリケーション/インターネット/ウェブブラウザー
 
-yay -S firefox firefox-i18n-ja
-
 yay -S tor-browser
 
 yay -S slack-desktop
@@ -352,24 +330,12 @@ yay -S evince-no-gnome
 
 yay -S gimp
 
-yay -S eclipse-java-bin
-
 yay -S intellij-idea-community-edition
 # IntelliJ IDEA configulation
-
-yay -S wine wine-mono wine-gecko winetricks
-yay -S --asdeps lib32-libpulse
-
-yay -S jd-gui-bin
 
 yay -S slackcat
 
 yay -S zotero
-
-sudo npm install -g truffle
-yay -S ganache-bin
-
-yay -S electrum
 
 yay -S obs-studio
 
