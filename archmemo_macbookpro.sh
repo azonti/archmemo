@@ -82,6 +82,25 @@ initrd /EFI/arch/initramfs-linux.img
 options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs
 EOF
 
+cat > /usr/lib/systemd/system-sleep/usb-suspend-workaround.sh << EOF
+#!/bin/bash
+
+PCI_DEV="0000:00:14.0"
+
+case \$1/\$2 in
+  pre/*)
+    # echo "Going to \$2..."
+    rmmod brcmfmac
+    echo "\$PCI_DEV" > /sys/bus/pci/drivers/xhci_hcd/unbind
+    ;;
+  post/*)
+    # echo "Waking up from \$2..."
+    modprobe brcmfmac
+    echo "\$PCI_DEV" > /sys/bus/pci/drivers/xhci_hcd/bind
+    ;;
+esac
+EOF
+
 # ------------------------------------------------------------------------------
 
 timedatectl set-ntp true
