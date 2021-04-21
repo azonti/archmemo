@@ -232,16 +232,11 @@ localectl set-x11-keymap jp sun_type7_jp_usb
 
 yay -S pulseaudio pulseaudio-alsa
 
-yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp numix-gtk-theme gtk-engine-murrine qt5-styleplugins
+yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp qt5-styleplugins
 # edit ~/.profile.d
 
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-cica
 # edit /etc/fonts/local.conf
-sudo ln -s /etc/fonts/conf.avail/09-autohint-if-no-hinting.conf /etc/fonts/conf.d/
-sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
-sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
-sudo ln -s /etc/fonts/conf.avail/65-khmer.conf /etc/fonts/conf.d/
-sudo ln -s /etc/fonts/conf.avail/70-noto-cjk.conf /etc/fonts/conf.d/
 
 yay -S fcitx-im fcitx-mozc fcitx-configtool
 # edit ~/.profile.d
