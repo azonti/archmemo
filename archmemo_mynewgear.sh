@@ -286,6 +286,7 @@ sudo gpasswd -a azon vboxusers
 ## 個人設定/パネル/パネル1/アイテム/アクションボタン/アクション
 ## 個人設定/パネル/パネル2
 ## 個人設定/外観/フォント/レンダリング
+## ハードウェア/ディスプレイ/全般/1/周波数
 ## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/プロファイル
 ## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/新しくディスプレイが接続されたとき設定する
 ## ハードウェア/ディスプレイ/詳細/接続中のディスプレイ/新しくディスプレイが接続されたときプロファイルを自動的に有効にする
@@ -305,6 +306,8 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-sw
 # CUPS configulation
 
 yay -S google-chrome
+# Google Chrome configulation
+## デザイン/フォントをカスタマイズ
 # Xfce configulation
 ## システム/デフォルトアプリケーション/インターネット/ウェブブラウザー
 

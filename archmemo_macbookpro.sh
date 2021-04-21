@@ -302,6 +302,8 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-sw
 # CUPS configulation
 
 yay -S google-chrome
+# Google Chrome configulation
+## デザイン/フォントをカスタマイズ
 # Xfce configulation
 ## システム/デフォルトアプリケーション/インターネット/ウェブブラウザー
 
