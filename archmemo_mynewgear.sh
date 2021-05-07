@@ -337,3 +337,9 @@ yay -S zotero
 yay -S obs-studio
 
 yay -S coqide
+
+yay -S networkmanager-pptp
+
+yay -S networkmanager-l2tp libreswan
+sudo systemctl enable ipsec
+sudo systemctl start ipsec
