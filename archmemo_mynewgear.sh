@@ -223,7 +223,21 @@ yay -S ffmpeg
 
 yay -S youtube-dl
 
+yay -S iftop
+
 sudo npm install -g hexo-cli
+
+yay -S jwhois
+
+curl -o aws-nuke-v2.15.0-linux-amd64.tar.gz -L https://github.com/rebuy-de/aws-nuke/releases/download/v2.15.0/aws-nuke-v2.15.0-linux-amd64.tar.gz
+tar xf aws-nuke-v2.15.0-linux-amd64.tar.gz
+rm aws-nuke-v2.15.0-linux-amd64.tar.gz
+sudo mv aws-nuke-v2.15.0-linux-amd64 /usr/local/bin/aws-nuke
+
+curl -o track.zip https://s3-ap-northeast-1.amazonaws.com/track-cli/downloads/linux_x86_64/track.zip
+unar track.zip
+rm track.zip
+sudo mv track /usr/local/bin/
 
 # edit ~/.bashrc
 source ~/.bashrc
@@ -257,6 +271,10 @@ sudo gpasswd -a azon wireshark
 
 yay -S virtualbox virtualbox-host-modules-arch
 sudo gpasswd -a azon vboxusers
+
+yay -S vmware-workstation
+systemctl enable vmware-usbarbitrator
+systemctl enable vmware-networks
 
 # ------------------------------------------------------------------------------
 
@@ -327,6 +345,9 @@ yay -S evince-no-gnome
 
 yay -S gimp
 
+yay -S eclipse-java-bin
+# Eclipse configulation
+
 yay -S intellij-idea-community-edition
 # IntelliJ IDEA configulation
 
@@ -343,3 +364,5 @@ yay -S networkmanager-pptp
 yay -S networkmanager-l2tp libreswan
 sudo systemctl enable ipsec
 sudo systemctl start ipsec
+
+yay -S minecraft-launcher

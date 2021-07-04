@@ -20,3 +20,17 @@
 
 + ~/.config/fcitx
 + ~/.config/mozc
+
+# Eclipse
+
+## Removal
+
++ ~/.eclipse
++ ~/eclipse-workspace/.metadata
+
+# IntelliJ IDEA
+
+## Removal
+
++ ~/.config/JetBrains
++ ~/.local/share/JetBrains
