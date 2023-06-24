@@ -1,8 +1,8 @@
 #!/bin/bash
 
 declare -A PACKAGE_GROUP=(
-  ["thereward"]="texlive-most xfce4 fcitx5-im"
-  ["macbookpro"]="texlive-most xfce4 fcitx5-im"
+  ["thereward"]="texlive xfce4 fcitx5-im"
+  ["macbookpro"]="texlive xfce4 fcitx5-im"
 )
 
 function parse {

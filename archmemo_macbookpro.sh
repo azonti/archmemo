@@ -216,7 +216,7 @@ source ~/.bashrc
 yay -S tmux
 # edit ~/.tmux.conf
 
-yay -S texlive-most texlive-langjapanese texlive-langgreek
+yay -S texlive texlive-langjapanese texlive-langgreek
 # edit ~/.latexmkrc
 
 yay -S git-lfs
