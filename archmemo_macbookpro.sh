@@ -312,6 +312,9 @@ yay -S android-studio
 # edit ~/.profile.d
 sudo npm install -g nativescript
 
+yay -S asdf-vm
+# edit ~/.profile.d
+
 # ------------------------------------------------------------------------------
 
 # PulseAudio configuration
