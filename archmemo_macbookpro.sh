@@ -206,13 +206,15 @@ yay -S python-pynvim
 yay -S android-udev android-tools
 sudo gpasswd -a azon adbusers
 
+yay -S android-studio
+# edit ~/.profile.d
+sudo npm install -g nativescript
+
 yay -S xdg-utils
 # edit ~/.bashrc.d
-source ~/.bashrc
 
 yay -S xclip
 # edit ~/.bashrc.d
-source ~/.bashrc
 
 yay -S tmux
 # edit ~/.tmux.conf
@@ -350,10 +352,6 @@ sudo gpasswd -a azon vboxusers
 yay -S vmware-workstation
 systemctl enable vmware-usbarbitrator
 systemctl enable vmware-networks
-
-yay -S android-studio
-# edit ~/.profile.d
-sudo npm install -g nativescript
 
 yay -S google-chrome
 # Google Chrome configuration
