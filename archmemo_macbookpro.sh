@@ -104,53 +104,6 @@ echo v4l2loopback > /etc/modules-load.d/virtualcamera.conf
 
 # ------------------------------------------------------------------------------
 
-timedatectl set-ntp true
-
-sed -i -E -e "s/#(\[multilib\])/\1/" -e "/\[multilib\]/{n;s/#(.+)/\1/}" /etc/pacman.conf
-pacman -Sy
-
-sed -i -E -e "s/#(PACKAGER)=\"[^\"]+\"/\1=\"Shu Takayama <syu.takayama@gmail.com>\"/" /etc/makepkg.conf
-
-pacman -S snapper
-umount /.snapshots
-rmdir /.snapshots
-snapper -c default create-config /
-btrfs subvolume delete /.snapshots
-mkdir /.snapshots
-mount -o compress=zstd,subvol=@snapshots /dev/mapper/btrfs /.snapshots
-sed -i -E -e "s/(TIMELINE_LIMIT_HOURLY)=\"[0-9]+\"/\1=\"6\"/" /etc/snapper/configs/default
-sed -i -E -e "s/(TIMELINE_LIMIT_DAILY)=\"[0-9]+\"/\1=\"24\"/" /etc/snapper/configs/default
-sed -i -E -e "s/(TIMELINE_LIMIT_WEEKLY)=\"[0-9]+\"/\1=\"7\"/" /etc/snapper/configs/default
-sed -i -E -e "s/(TIMELINE_LIMIT_MONTHLY)=\"[0-9]+\"/\1=\"0\"/" /etc/snapper/configs/default
-sed -i -E -e "s/(TIMELINE_LIMIT_YEARLY)=\"[0-9]+\"/\1=\"0\"/" /etc/snapper/configs/default
-systemctl enable snapper-timeline.timer
-systemctl enable snapper-cleanup.timer
-
-pacman -S tlp ethtool lsb-release smartmontools x86_energy_perf_policy
-systemctl enable tlp
-systemctl mask systemd-rfkill
-systemctl mask systemd-rfkill.socket
-
-pacman -S networkmanager-pptp
-
-pacman -S networkmanager-l2tp strongswan
-
-pacman -S networkmanager-openvpn
-
-pacman -S bluez
-systemctl enable bluetooth
-
-pacman -S docker
-systemctl enable docker
-
-pacman -S docker-compose
-
-pacman -S tor
-systemctl enable tor
-
-pacman -S proxychains-ng
-sed -i -E -e "s/socks4 \t127\.0\.0\.1 9050/socks5 \t127.0.0.1 9050/" /etc/proxychains.conf
-
 useradd -m -G wheel -s /bin/bash azon
 cp -R /etc/skel/. /home/azon
 chown -R azon:azon /home/azon
@@ -158,40 +111,7 @@ EDITOR=vim visudo
 passwd azon
 passwd -l root
 
-sed -i -E -e "s/#(DNSSEC=no)/\1/" /etc/systemd/resolved.conf
-# edit /etc/NetworkManager/conf.d
-ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-systemctl enable systemd-resolved
-
 # ------------------------------------------------------------------------------
-
-mkdir ~/.profile.d
-# edit ~/.bash_profile
-
-sudo pacman -S go
-# edit ~/.profile.d
-
-sudo pacman -S npm
-
-sudo pacman -S neovim
-sudo npm install -g neovim
-sudo pacman -S python-pynvim
-# edit ~/.vimrc
-# edit ~/.config/nvim
-# edit ~/.profile.d
-
-# edit ~/.ssh/config
-# edit ~/.profile.d
-
-sudo pacman -S android-udev android-tools
-sudo gpasswd -a azon adbusers
-
-sudo pacman -S bash-completion
-
-# ------------------------------------------------------------------------------
-
-mkdir ~/.bashrc.d
-# edit ~/.bashrc
 
 sudo pacman -S git
 # edit ~/.gitconfig
@@ -204,6 +124,87 @@ makepkg -sri
 popd
 rm -rf yay
 popd
+
+sudo timedatectl set-ntp true
+
+sudo sed -i -E -e "s/#(\[multilib\])/\1/" -e "/\[multilib\]/{n;s/#(.+)/\1/}" /etc/pacman.conf
+yay -Sy
+
+sudo sed -i -E -e "s/#(PACKAGER)=\"[^\"]+\"/\1=\"Shu Takayama <syu.takayama@gmail.com>\"/" /etc/makepkg.conf
+
+yay -S snapper
+sudo umount /.snapshots
+sudo rmdir /.snapshots
+sudo snapper -c default create-config /
+sudo btrfs subvolume delete /.snapshots
+sudo mkdir /.snapshots
+sudo mount -o compress=zstd,subvol=@snapshots /dev/mapper/btrfs /.snapshots
+sudo sed -i -E -e "s/(TIMELINE_LIMIT_HOURLY)=\"[0-9]+\"/\1=\"6\"/" /etc/snapper/configs/default
+sudo sed -i -E -e "s/(TIMELINE_LIMIT_DAILY)=\"[0-9]+\"/\1=\"24\"/" /etc/snapper/configs/default
+sudo sed -i -E -e "s/(TIMELINE_LIMIT_WEEKLY)=\"[0-9]+\"/\1=\"7\"/" /etc/snapper/configs/default
+sudo sed -i -E -e "s/(TIMELINE_LIMIT_MONTHLY)=\"[0-9]+\"/\1=\"0\"/" /etc/snapper/configs/default
+sudo sed -i -E -e "s/(TIMELINE_LIMIT_YEARLY)=\"[0-9]+\"/\1=\"0\"/" /etc/snapper/configs/default
+sudo systemctl enable snapper-timeline.timer
+sudo systemctl enable snapper-cleanup.timer
+
+yay -S tlp ethtool lsb-release smartmontools x86_energy_perf_policy
+sudo systemctl enable tlp
+sudo systemctl mask systemd-rfkill
+sudo systemctl mask systemd-rfkill.socket
+
+yay -S networkmanager-pptp
+
+yay -S networkmanager-l2tp strongswan
+
+yay -S networkmanager-openvpn
+
+sudo sed -i -E -e "s/#(DNSSEC=no)/\1/" /etc/systemd/resolved.conf
+# edit /etc/NetworkManager/conf.d
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo systemctl enable systemd-resolved
+
+yay -S bluez
+sudo systemctl enable bluetooth
+
+yay -S docker
+sudo systemctl enable docker
+
+yay -S docker-compose
+
+yay -S tor
+sudo systemctl enable tor
+
+yay -S proxychains-ng
+sudo sed -i -E -e "s/socks4 \t127\.0\.0\.1 9050/socks5 \t127.0.0.1 9050/" /etc/proxychains.conf
+
+mkdir ~/.profile.d
+# edit ~/.bash_profile
+
+mkdir ~/.bashrc.d
+# edit ~/.bashrc
+
+yay -S bash-completion
+
+yay -S asdf-vm
+# edit ~/.profile.d
+
+yay -S go
+# edit ~/.profile.d
+
+yay -S npm
+
+yay -S neovim
+sudo npm install -g neovim
+yay -S python-pynvim
+# edit ~/.vimrc
+# edit ~/.config/nvim
+# edit ~/.profile.d
+
+# edit ~/.ssh/config
+# edit ~/.profile.d
+
+yay -S android-udev android-tools
+sudo gpasswd -a azon adbusers
 
 yay -S xdg-utils
 # edit ~/.bashrc.d
@@ -271,8 +272,7 @@ sudo npm install -g hexo-cli
 
 yay -S namcap
 
-# edit ~/.bashrc
-source ~/.bashrc
+# ------------------------------------------------------------------------------
 
 yay -S lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm
@@ -297,23 +297,6 @@ yay -S cups
 sudo systemctl enable cups
 yay -S brother-mfc-l9570cdw
 yay -S epson-inkjet-printer-escpr2
-
-yay -S wireshark-qt
-sudo gpasswd -a azon wireshark
-
-yay -S virtualbox virtualbox-host-modules-arch
-sudo gpasswd -a azon vboxusers
-
-yay -S vmware-workstation
-systemctl enable vmware-usbarbitrator
-systemctl enable vmware-networks
-
-yay -S android-studio
-# edit ~/.profile.d
-sudo npm install -g nativescript
-
-yay -S asdf-vm
-# edit ~/.profile.d
 
 # ------------------------------------------------------------------------------
 
@@ -357,6 +340,20 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-switch-re
 ## azon のログアウト/S
 
 # CUPS configuration
+
+yay -S wireshark-qt
+sudo gpasswd -a azon wireshark
+
+yay -S virtualbox virtualbox-host-modules-arch
+sudo gpasswd -a azon vboxusers
+
+yay -S vmware-workstation
+systemctl enable vmware-usbarbitrator
+systemctl enable vmware-networks
+
+yay -S android-studio
+# edit ~/.profile.d
+sudo npm install -g nativescript
 
 yay -S google-chrome
 # Google Chrome configuration
