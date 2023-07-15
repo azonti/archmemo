@@ -193,6 +193,11 @@ yay -S go
 
 yay -S npm
 
+yay -S opam
+opam init
+# edit ~/.profile.d
+opam repo add coq-released https://coq.inria.fr/opam/released
+
 yay -S neovim
 sudo npm install -g neovim
 yay -S python-pynvim
@@ -395,7 +400,7 @@ yay -S zotero-bin
 
 yay -S obs-studio
 
-yay -S coqide mathcomp
+opam install coq coq-mathcomp-ssreflect
 
 yay -S tla-toolbox
 

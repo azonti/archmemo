@@ -13,7 +13,21 @@ function npm_parse {
   cat - | tr ' ' '\n' | awk '{ print "npm/"$1 }'
 }
 
-EXPECTED=$( ( (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(pacstrap \/mnt|(sudo )?pacman -S|yay -S) (.+)$/\3/p"; echo yay) | parse; (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(sudo )?npm install -g (.+)$/\2/p"; echo node-gyp nopt npm semver corepack) | npm_parse ) | sort )
-ACTUAL=$( comm -23 <( ( (yay -Qqe; echo ${PACKAGE_GROUP[$HOSTNAME]}) | parse; npm ls -g --parseable --depth=0 2>/dev/null | sed -nE -e "s/^\/usr\/lib\/node_modules\/(.+)$/\1/p" | npm_parse ) | sort ) <( ( yay -Qqeg ${PACKAGE_GROUP[$HOSTNAME]} | parse ) | sort ) )
+function opam_parse {
+  cat - | tr ' ' '\n' | awk '{ print "opam/"$1 }'
+}
+
+EXPECTED=$( (\
+  (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(pacstrap \/mnt|(sudo )?pacman -S|yay -S) (.+)$/\3/p"; echo yay) | parse;
+  (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^(sudo )?npm install -g (.+)$/\2/p"; echo node-gyp nopt npm semver corepack) | npm_parse;
+  (cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^opam install (.+)/\1/p"; echo ocaml ocaml-system) | opam_parse;
+) | sort )
+ACTUAL=$( comm -23 <( (\
+  (yay -Qqe; echo ${PACKAGE_GROUP[$HOSTNAME]}) | parse;
+  npm ls -g --parseable --depth=0 2>/dev/null | sed -nE -e "s/^\/usr\/lib\/node_modules\/(.+)$/\1/p" | npm_parse;
+  opam list --roots | awk 'NR >= 3 { print $1 }' | opam_parse;
+) | sort ) <( (\
+  yay -Qqeg ${PACKAGE_GROUP[$HOSTNAME]} | parse
+) | sort ) )
 
 diff <(echo "$EXPECTED") <(echo "$ACTUAL")
