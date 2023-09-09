@@ -211,8 +211,9 @@ yay -S python-pynvim
 yay -S android-udev android-tools
 sudo gpasswd -a azon adbusers
 
-yay -S android-studio
+yay -S jdk-openjdk android-studio
 # edit ~/.profile.d
+archlinux-java set java-20-openjdk
 sudo npm install -g nativescript
 
 yay -S xdg-utils
