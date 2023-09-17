@@ -198,6 +198,9 @@ opam init
 # edit ~/.profile.d
 opam repo add coq-released https://coq.inria.fr/opam/released
 
+yay -S jdk11-openjdk
+archlinux-java set java-11-openjdk
+
 yay -S neovim
 sudo npm install -g neovim
 yay -S python-pynvim
@@ -211,9 +214,8 @@ yay -S python-pynvim
 yay -S android-udev android-tools
 sudo gpasswd -a azon adbusers
 
-yay -S jdk-openjdk android-studio
+yay -S android-studio
 # edit ~/.profile.d
-archlinux-java set java-20-openjdk
 sudo npm install -g nativescript
 
 yay -S xdg-utils
