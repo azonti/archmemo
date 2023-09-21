@@ -269,6 +269,10 @@ sudo npm install -g hexo-cli
 
 yay -S namcap
 
+go install golang.org/x/tools/cmd/goimports@latest
+
+yay -S golangci-lint-bin
+
 # ------------------------------------------------------------------------------
 
 yay -S lightdm lightdm-gtk-greeter
