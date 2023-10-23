@@ -362,7 +362,7 @@ yay -S firefox firefox-i18n-ja
 ## 一般/ネットワーク設定/E
 ## プライバシーとセキュリティ/ブラウザープライバシー/履歴/W
 
-yay -S tor-browser
+yay -S torbrowser-launcher
 
 yay -S slack-desktop
 # Slack configuration
