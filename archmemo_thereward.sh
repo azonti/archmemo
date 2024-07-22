@@ -402,3 +402,5 @@ yay -S steam
 yay -S minecraft-launcher
 
 yay -S wine winetricks
+
+yay -S diff-pdf
