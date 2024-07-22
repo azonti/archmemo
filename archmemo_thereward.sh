@@ -68,7 +68,7 @@ pacman -S networkmanager
 # edit /etc/NetworkManager/conf.d
 systemctl enable NetworkManager
 
-sed -i -E -e "s/HOOKS=\(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck\)/HOOKS=\(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
+sed -i -E -e "s/HOOKS=\(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck\)/HOOKS=\(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
 mkinitcpio -P
 
 passwd
@@ -372,8 +372,6 @@ yay -S zoom
 
 yay -S discord
 # Discord configuration
-
-yay -S f5vpn
 
 yay -S transmission-gtk
 
