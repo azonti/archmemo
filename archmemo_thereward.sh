@@ -116,6 +116,7 @@ sudo sed -i -E -e "s/#(\[multilib\])/\1/" -e "/\[multilib\]/{n;s/#(.+)/\1/}" /et
 yay -Sy
 
 sudo sed -i -E -e "s/#(PACKAGER)=\"[^\"]+\"/\1=\"Shu Takayama <syu.takayama@gmail.com>\"/" /etc/makepkg.conf
+sudo sed -i -E -e "s/OPTIONS=\(strip docs \!libtool \!staticlibs emptydirs zipman purge debug lto\)/OPTIONS=\(strip docs \!libtool \!staticlibs emptydirs zipman purge \!debug lto\)/" /etc/makepkg.conf
 
 yay -S snapper
 sudo umount /.snapshots
@@ -272,6 +273,8 @@ yay -S namcap
 go install golang.org/x/tools/cmd/goimports@latest
 
 yay -S golangci-lint-bin
+
+yay -S google-cloud-cli
 
 # ------------------------------------------------------------------------------
 
