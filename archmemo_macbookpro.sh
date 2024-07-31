@@ -299,7 +299,7 @@ yay -S xorg-server xorg-xwininfo
 
 localectl set-x11-keymap jp pc104
 
-yay -S pulseaudio pulseaudio-alsa
+yay -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth
 
 yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp qt5-styleplugins papirus-icon-theme
 # edit ~/.profile.d
