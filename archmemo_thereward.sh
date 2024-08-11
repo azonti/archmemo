@@ -136,6 +136,7 @@ sudo systemctl enable snapper-cleanup.timer
 yay -S tlp ethtool lsb-release smartmontools x86_energy_perf_policy acpi_call
 sudo sed -i -E -e "s/#(START_CHARGE_THRESH_BAT0)=[0-9]+/\1=75/" /etc/tlp.conf
 sudo sed -i -E -e "s/#(STOP_CHARGE_THRESH_BAT0)=[0-9]+/\1=80/" /etc/tlp.conf
+sudo sed -i -E -e "s/#(RESTORE_THRESHOLDS_ON_BAT)=[01]/\1=1/" /etc/tlp.conf
 sudo systemctl enable tlp
 sudo systemctl mask systemd-rfkill
 sudo systemctl mask systemd-rfkill.socket
