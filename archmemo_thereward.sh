@@ -277,6 +277,8 @@ yay -S golangci-lint-bin
 
 yay -S google-cloud-cli
 
+yay -S imagemagick
+
 # ------------------------------------------------------------------------------
 
 yay -S lightdm lightdm-gtk-greeter
@@ -408,3 +410,7 @@ yay -S minecraft-launcher
 yay -S wine winetricks
 
 yay -S diff-pdf
+
+yay -S audacity
+
+yay -S voicevox-appimage
