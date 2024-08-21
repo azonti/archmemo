@@ -323,6 +323,7 @@ yay -S epson-inkjet-printer-escpr2
 
 # Xfce configuration
 ## 個人設定/Xfce ターミナル設定/一般/スクロール/スクロールバー
+## 個人設定/Xfce ターミナル設定/一般/スクロール/U
 ## 個人設定/Xfce ターミナル設定/外観/フォント/F
 ## 個人設定/Xfce ターミナル設定/外観/背景
 ## 個人設定/Xfce ターミナル設定/外観/新しいウィンドウを開く場合/M
