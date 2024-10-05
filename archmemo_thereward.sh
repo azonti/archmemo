@@ -229,6 +229,8 @@ sudo npm install -g pyright
 
 yay -S flake8
 
+yay -S python-isort
+
 yay -S terraform-ls
 
 yay -S solidity-bin
@@ -382,7 +384,7 @@ yay -S discord
 
 yay -S transmission-gtk
 
-yay -S evince-no-gnome
+yay -S qpdfview
 
 yay -S gimp
 
@@ -407,6 +409,8 @@ yay -S ganache-bin
 yay -S steam
 
 yay -S minecraft-launcher
+
+yay -S mcpelauncher-appimage
 
 yay -S wine winetricks
 
