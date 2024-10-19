@@ -43,7 +43,7 @@ fallocate -l 16G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs sof-firmware linux-headers v4l2loopback-dkms vim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs sof-firmware linux-headers v4l2loopback-dkms neovim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
@@ -190,10 +190,8 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 yay -S jdk11-openjdk
 archlinux-java set java-11-openjdk
 
-yay -S neovim
 sudo npm install -g neovim
 yay -S python-pynvim
-# edit ~/.vimrc
 # edit ~/.config/nvim
 # edit ~/.profile.d
 
@@ -225,6 +223,8 @@ yay -S clang
 
 yay -S gopls
 
+sudo npm install -g typescript-language-server
+
 sudo npm install -g pyright
 
 yay -S flake8
@@ -242,8 +242,6 @@ yay -S cblas
 sudo npm install -g @vue/cli
 
 yay -S terraform
-
-sudo npm install -g truffle
 
 yay -S unarchiver
 
@@ -299,7 +297,7 @@ yay -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth
 yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp qt5-styleplugins gnome-keyring papirus-icon-theme
 # edit ~/.profile.d
 
-yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-cica
+yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hackgen
 # edit /etc/fonts/local.conf
 
 yay -S fcitx5-im mozc-ut fcitx5-mozc-ut
