@@ -289,6 +289,8 @@ yay -S golangci-lint-bin
 
 yay -S google-cloud-cli
 
+npm install -g firebase-tools
+
 yay -S imagemagick
 
 yay -S elan-lean
