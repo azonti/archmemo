@@ -237,7 +237,7 @@ yay -S gopls
 
 sudo npm install -g typescript-language-server
 
-sudo npm install -g @vue/language-server
+sudo npm install -g @vue/language-server @vue/typescript-plugin
 
 sudo npm install -g pyright
 
