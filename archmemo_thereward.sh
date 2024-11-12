@@ -201,7 +201,7 @@ yay -S python-pynvim
 yay -S android-udev android-tools
 sudo gpasswd -a azon adbusers
 
-yay -S android-studio
+yay -S android-studio libbsd
 # edit ~/.profile.d
 sudo npm install -g nativescript
 
