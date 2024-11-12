@@ -393,7 +393,7 @@ yay -S qpdfview
 
 yay -S gimp
 
-yay -S eclipse-java
+yay -S eclipse-java-bin
 # Eclipse configuration
 
 yay -S intellij-idea-community-edition
