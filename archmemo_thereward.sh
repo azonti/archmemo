@@ -92,7 +92,7 @@ echo v4l2loopback > /etc/modules-load.d/virtualcamera.conf
 useradd -m -G wheel -s /bin/bash azon
 cp -R /etc/skel/. /home/azon
 chown -R azon:azon /home/azon
-EDITOR=vim visudo
+EDITOR=nvim visudo
 passwd azon
 passwd -l root
 
