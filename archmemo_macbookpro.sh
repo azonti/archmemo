@@ -295,6 +295,8 @@ npm install -g firebase-tools
 
 yay -S imagemagick
 
+opam install coq coq-mathcomp-ssreflect
+
 yay -S elan-lean
 elan toolchain install leanprover/lean4:stable
 
@@ -417,8 +419,6 @@ yay -S intellij-idea-community-edition
 yay -S zotero-bin
 
 yay -S obs-studio
-
-opam install coq coq-mathcomp-ssreflect
 
 yay -S tla-toolbox
 
