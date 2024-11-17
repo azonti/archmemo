@@ -223,6 +223,10 @@ yay -S clang
 
 yay -S gopls
 
+go install golang.org/x/tools/cmd/goimports@latest
+
+yay -S golangci-lint-bin
+
 sudo npm install -g typescript-language-server
 
 sudo npm install -g eslint_d
@@ -276,10 +280,6 @@ yay -S slackcat
 sudo npm install -g hexo-cli
 
 yay -S namcap
-
-go install golang.org/x/tools/cmd/goimports@latest
-
-yay -S golangci-lint-bin
 
 yay -S google-cloud-cli
 
