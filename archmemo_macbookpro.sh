@@ -237,6 +237,10 @@ yay -S gopls
 
 sudo npm install -g typescript-language-server
 
+sudo npm install -g eslint_d
+
+sudo npm install -g @fsouza/prettierd
+
 sudo npm install -g @vue/language-server @vue/typescript-plugin
 
 sudo npm install -g pyright
