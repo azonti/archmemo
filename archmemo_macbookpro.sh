@@ -285,7 +285,7 @@ yay -S gnuplot
 
 yay -S ffmpeg
 
-yay -S youtube-dl
+yay -S yt-dlp
 
 yay -S slackcat
 
