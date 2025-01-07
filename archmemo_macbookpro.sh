@@ -295,7 +295,7 @@ yay -S namcap
 
 yay -S google-cloud-cli
 
-npm install -g firebase-tools
+sudo npm install -g firebase-tools
 
 yay -S imagemagick
 
