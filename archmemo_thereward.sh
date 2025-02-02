@@ -218,6 +218,7 @@ yay -S texlive texlive-langjapanese texlive-langgreek
 # edit ~/.latexmkrc
 
 yay -S git-lfs
+git lfs install
 
 yay -S clang
 
