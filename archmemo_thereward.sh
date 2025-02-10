@@ -311,7 +311,7 @@ yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hackgen
 # edit /etc/fonts/local.conf
 
-yay -S fcitx5-im mozc-ut fcitx5-mozc-ut
+yay -S fcitx5-im fcitx5-mozc-ut
 # edit ~/.profile.d
 
 yay -S cups
