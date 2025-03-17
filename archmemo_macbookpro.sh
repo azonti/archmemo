@@ -242,8 +242,10 @@ yay -S golangci-lint-bin
 sudo npm install -g typescript-language-server
 
 sudo npm install -g eslint_d
+# edit ~/.profile.d
 
 sudo npm install -g @fsouza/prettierd
+# edit ~/.profile.d
 
 sudo npm install -g @vue/language-server @vue/typescript-plugin
 
