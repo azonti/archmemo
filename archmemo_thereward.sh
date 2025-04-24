@@ -239,7 +239,7 @@ sudo npm install -g @vue/language-server @vue/typescript-plugin
 
 sudo npm install -g pyright
 
-yay -S flake8
+yay -S python-flake8
 
 yay -S python-isort
 
