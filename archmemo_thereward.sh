@@ -279,6 +279,11 @@ yay -S yt-dlp
 
 yay -S slackcat
 
+npm install --prefix ~/.local -g @openai/codex
+# edit ~/.profile.d
+
+npm install --prefix ~/.local -g @anthropic-ai/claude-code
+
 sudo npm install -g hexo-cli
 
 yay -S namcap
