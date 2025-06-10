@@ -194,6 +194,8 @@ yay -S go
 
 yay -S npm
 
+yay -S bun-bin
+
 yay -S opam
 opam init
 # edit ~/.profile.d
