@@ -181,6 +181,7 @@ yay -S go
 # edit ~/.profile.d
 
 yay -S npm
+# edit ~/.profile.d
 
 yay -S bun-bin
 
@@ -282,7 +283,6 @@ yay -S yt-dlp
 yay -S slackcat
 
 npm install --prefix ~/.local -g @openai/codex
-# edit ~/.profile.d
 
 npm install --prefix ~/.local -g @anthropic-ai/claude-code
 
