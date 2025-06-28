@@ -286,6 +286,8 @@ npm install --prefix ~/.local -g @openai/codex
 
 npm install --prefix ~/.local -g @anthropic-ai/claude-code
 
+npm install --prefix ~/.local -g @google/gemini-cli
+
 sudo npm install -g hexo-cli
 
 yay -S namcap
