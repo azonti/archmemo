@@ -376,7 +376,6 @@ yay -S epson-inkjet-printer-escpr2
 ## ハードウェア/電源管理/一般/ボタン
 ## ハードウェア/電源管理/システム
 ## ハードウェア/電源管理/ディスプレイ
-## ハードウェア/電源管理/セキュリティ
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -s false
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-switch-restore-on-exit -s 1
 ## システム/LightDM GTK+ Greeterの設定/外観/テーマ
