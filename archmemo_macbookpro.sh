@@ -286,6 +286,8 @@ yay -S mtr
 
 yay -S jq
 
+yay -S ripgrep
+
 yay -S gnuplot
 
 yay -S ffmpeg
