@@ -370,6 +370,9 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-switch-re
 ## システム/LightDM GTK+ Greeterの設定/外観/アイコン
 ## azon のログアウト/S
 
+# Fcitx5 configuration
+## グローバルオプション/入力メソッドの切り替え
+
 # CUPS configuration
 
 yay -S wireshark-qt
