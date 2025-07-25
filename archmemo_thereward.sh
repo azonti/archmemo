@@ -425,6 +425,8 @@ yay -S zotero-bin
 
 yay -S obs-studio
 
+yay -S immersed intel-media-driver
+
 yay -S tla-toolbox
 
 yay -S ganache-bin
