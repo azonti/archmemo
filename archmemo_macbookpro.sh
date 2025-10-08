@@ -234,6 +234,8 @@ yay -S texlive texlive-langjapanese texlive-langgreek
 
 yay -S git-lfs
 
+yay -S github-cli
+
 yay -S clang
 
 yay -S gopls
