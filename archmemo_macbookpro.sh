@@ -298,6 +298,8 @@ yay -S yt-dlp
 
 yay -S slackcat
 
+sudo npm install -g @github/copilot-language-server
+
 npm install --prefix ~/.local -g @openai/codex
 
 npm install --prefix ~/.local -g @anthropic-ai/claude-code
