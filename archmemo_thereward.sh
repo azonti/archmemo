@@ -68,7 +68,7 @@ pacman -S networkmanager
 # edit /etc/NetworkManager/conf.d
 systemctl enable NetworkManager
 
-sed -i -E -e "s/HOOKS=\(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck\)/HOOKS=\(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
+sed -i -E -e "s/HOOKS=\(base systemd autodetect microcode modconf kms keyboard keymap sd-vconsole block filesystems fsck\)/HOOKS=\(base systemd autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
 mkinitcpio -P
 
 passwd
