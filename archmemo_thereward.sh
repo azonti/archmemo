@@ -68,7 +68,7 @@ pacman -S networkmanager
 # edit /etc/NetworkManager/conf.d
 systemctl enable NetworkManager
 
-sed -i -E -e "s/HOOKS=\(base systemd autodetect microcode modconf kms keyboard keymap sd-vconsole block filesystems fsck\)/HOOKS=\(base systemd autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
+sed -i -E -e "s/HOOKS=\(base systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems fsck\)/HOOKS=\(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems resume fsck\)/" /etc/mkinitcpio.conf
 mkinitcpio -P
 
 passwd
@@ -80,7 +80,7 @@ title Arch Linux
 linux /EFI/arch/vmlinuz-linux
 initrd /EFI/arch/intel-ucode.img
 initrd /EFI/arch/initramfs-linux.img
-options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs intel_idle.max_cstate=1 i915.enable_dc=0
+options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs
 EOF
 
 echo blacklist pcspkr > /etc/modprobe.d/nobeep.conf
