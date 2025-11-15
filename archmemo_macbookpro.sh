@@ -452,8 +452,6 @@ yay -S steam
 
 yay -S minecraft-launcher
 
-yay -S mcpelauncher-appimage
-
 yay -S wine winetricks
 regedit ~/wine-japanese.reg
 
