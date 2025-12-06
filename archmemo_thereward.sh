@@ -80,7 +80,7 @@ title Arch Linux
 linux /EFI/arch/vmlinuz-linux
 initrd /EFI/arch/intel-ucode.img
 initrd /EFI/arch/initramfs-linux.img
-options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs i915.enable_dc=0
+options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs intel_idle.max_cstate=1
 EOF
 
 echo blacklist pcspkr > /etc/modprobe.d/nobeep.conf
