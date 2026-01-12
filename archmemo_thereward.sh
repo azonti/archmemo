@@ -282,7 +282,7 @@ yay -S gnuplot
 
 yay -S ffmpeg
 
-yay -S yt-dlp
+yay -S yt-dlp python-secretstorage
 
 yay -S slackcat
 
