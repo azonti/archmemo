@@ -333,7 +333,7 @@ localectl set-x11-keymap jp pc104
 
 yay -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth
 
-yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueberry light-locker gvfs gvfs-gphoto2 gvfs-mtp qt5-styleplugins gnome-keyring papirus-icon-theme
+yay -S xfce4 ristretto xfce4-taskmanager xfce4-notifyd xfce4-screenshooter xfce4-clipman-plugin lightdm-gtk-greeter-settings pavucontrol xfce4-pulseaudio-plugin network-manager-applet blueman light-locker gvfs gvfs-gphoto2 gvfs-mtp qt5-styleplugins gnome-keyring papirus-icon-theme
 # edit ~/.profile.d
 
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hackgen
