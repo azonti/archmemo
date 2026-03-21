@@ -290,7 +290,7 @@ sudo npm install -g @github/copilot-language-server
 
 npm install --prefix ~/.local -g @openai/codex
 
-npm install --prefix ~/.local -g @anthropic-ai/claude-code
+yay -S claude-code
 
 npm install --prefix ~/.local -g @google/gemini-cli
 
