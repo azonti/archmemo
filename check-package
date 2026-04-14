@@ -43,7 +43,7 @@ ACTUAL=$( comm -23 <( (\
   npm ls --prefix ~/.local -g --parseable --depth=0 2>/dev/null | sed -nE -e "s/^\/home\/[^/]+\/\.local\/lib\/node_modules\/(.+)$/\1/p" | user_global_npm_parse;
   opam list --roots | awk 'NR >= 3 { print $1 }' | opam_parse;
   ls -1 ~/go/bin | goinstall_parse;
-  elan toolchain list | awk '{ print $1 }' | elan_toolchain_parse;
+  elan toolchain list | awk -F ":" '$2 == "stable" { print $1":"$2 }' | elan_toolchain_parse;
 ) | sort ) <( (\
   yay -Qqeg ${PACKAGE_GROUP[$HOSTNAME]} | parse
 ) | sort ) )
