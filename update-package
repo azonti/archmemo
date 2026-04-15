@@ -1,0 +1,51 @@
+#!/bin/bash
+export SUDO_ASKPASS=~/sudo_askpass.sh
+
+
+echo ""
+echo "=== Updating system packages ==="
+echo ""
+yay --noconfirm --sudoflags "--askpass"
+
+
+echo ""
+echo "=== Updating npm packages ==="
+echo ""
+sudo --askpass npm update -g
+
+
+echo ""
+echo "=== Updating user-global npm packages ==="
+echo ""
+npm update -g --prefix ~/.local
+
+
+echo ""
+echo "=== Updating opam packages ==="
+echo ""
+opam update --confirm-level=yes
+opam upgrade --confirm-level=yes
+
+
+echo ""
+echo "=== Updating Go installs ==="
+echo ""
+declare -A GOINSTALL_TO_GOPACKAGE
+GOINSTALL_TO_GOPACKAGE["goimports"]="golang.org/x/tools/cmd/goimports"
+
+GOINSTALLS=$(ls -1 ~/go/bin)
+for GOINSTALL in $GOINSTALLS; do
+    GOPACKAGE=${GOINSTALL_TO_GOPACKAGE[$GOINSTALL]}
+    echo "Updating Go install $GOINSTALL (package $GOPACKAGE)"
+    go install "$GOPACKAGE@latest"
+done
+
+
+echo ""
+echo "=== Updating Elan toolchains ==="
+echo ""
+ELAN_TOOLCHAINS=$(elan toolchain list | awk -F ":" '$2 == "stable" { print $1":"$2 }')
+for ELAN_TOOLCHAIN in $ELAN_TOOLCHAINS; do
+    echo "Updating Elan toolchain $ELAN_TOOLCHAIN"
+    elan toolchain install "$ELAN_TOOLCHAIN"
+done
