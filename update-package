@@ -30,16 +30,12 @@ opam upgrade --confirm-level=yes
 echo ""
 echo "=== Updating Go installs ==="
 echo ""
-declare -A GOINSTALL_TO_GOPACKAGE
-GOINSTALL_TO_GOPACKAGE["goimports"]="golang.org/x/tools/cmd/goimports"
-
 GOINSTALLS=$(ls -1 ~/go/bin)
 for GOINSTALL in $GOINSTALLS; do
-    GOPACKAGE=${GOINSTALL_TO_GOPACKAGE[$GOINSTALL]}
+    GOPACKAGE=$(cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^go install (.+\/$GOINSTALL)@latest$/\1/p")
     echo "Updating Go install $GOINSTALL (package $GOPACKAGE)"
     go install "$GOPACKAGE@latest"
 done
-
 
 echo ""
 echo "=== Updating Elan toolchains ==="
