@@ -1,0 +1,5 @@
+#!/bin/bash
+export SUDO_ASKPASS=~/sudo_askpass.sh
+
+sudo --askpass find /usr/lib -type f -not -path "/usr/lib/node_modules/*" -print0 | xargs -0 yay -Qo > /dev/null
+sudo --askpass find /etc -type f -not -path "/etc/ca-certificates/*" -print0 | xargs -0 yay -Qo > /dev/null
