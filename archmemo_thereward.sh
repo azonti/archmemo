@@ -193,6 +193,7 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 yay -S jdk11-openjdk
 archlinux-java set java-11-openjdk
 
+yay -S tree-sitter-cli
 sudo npm install -g neovim
 yay -S python-pynvim
 # edit ~/.config/nvim
