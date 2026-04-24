@@ -287,11 +287,9 @@ yay -S yt-dlp python-secretstorage
 
 yay -S slackcat
 
-npm install --prefix ~/.local -g @openai/codex
+sudo npm install -g @openai/codex
 
 yay -S claude-code
-
-npm install --prefix ~/.local -g @google/gemini-cli
 
 sudo npm install -g hexo-cli
 

@@ -15,12 +15,6 @@ sudo --askpass npm update -g
 
 
 echo ""
-echo "=== Updating user-global npm packages ==="
-echo ""
-npm update -g --prefix ~/.local
-
-
-echo ""
 echo "=== Updating opam packages ==="
 echo ""
 opam update --confirm-level=yes
