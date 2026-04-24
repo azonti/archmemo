@@ -181,7 +181,6 @@ yay -S go
 # edit ~/.profile.d
 
 yay -S npm
-# edit ~/.profile.d
 
 yay -S bun
 
