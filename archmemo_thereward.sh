@@ -43,7 +43,7 @@ fallocate -l 16G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs sof-firmware linux-headers v4l2loopback-dkms neovim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware fwupd dosfstools btrfs-progs sof-firmware linux-headers v4l2loopback-dkms neovim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
@@ -80,7 +80,7 @@ title Arch Linux
 linux /EFI/arch/vmlinuz-linux
 initrd /EFI/arch/intel-ucode.img
 initrd /EFI/arch/initramfs-linux.img
-options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs intel_idle.max_cstate=1
+options root=LABEL=btrfs rootflags=subvol=/@ rw cryptdevice=LABEL=luks:btrfs intel_idle.max_cstate=1 i915.enable_dc=0 ahci.mobile_lpm_policy=1
 EOF
 
 echo blacklist pcspkr > /etc/modprobe.d/nobeep.conf

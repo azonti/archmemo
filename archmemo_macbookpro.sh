@@ -42,7 +42,7 @@ fallocate -l 16G /mnt/.swap/swap
 mkswap /mnt/.swap/swap
 swapon /mnt/.swap/swap
 
-pacstrap /mnt base base-devel linux linux-firmware dosfstools btrfs-progs linux-headers v4l2loopback-dkms bcwc-pcie-git neovim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware fwupd dosfstools btrfs-progs linux-headers v4l2loopback-dkms bcwc-pcie-git neovim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i -E -e "s/\/mnt(\/\.esp\/EFI\/arch)/\1/g" /mnt/etc/fstab
 arch-chroot /mnt
