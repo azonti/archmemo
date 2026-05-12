@@ -256,8 +256,6 @@ yay -S ac-library
 
 yay -S cblas
 
-sudo npm install -g @vue/cli
-
 yay -S terraform
 
 yay -S unarchiver
