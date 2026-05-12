@@ -322,8 +322,10 @@ elan toolchain install leanprover/lean4:stable
 yay -S lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm
 
-yay -S xorg-server xorg-xwininfo
+yay -S xorg-server xorg-xwininfo xiccd
 # edit ~/.xprofile
+sudo colormgr device-add-profile XXX XXX
+sudo colormgr device-make-profile-default XXX XXX
 
 localectl set-x11-keymap jp pc104
 
