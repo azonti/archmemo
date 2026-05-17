@@ -11,7 +11,7 @@ yay --noconfirm --sudoflags "--askpass"
 echo ""
 echo "=== Updating npm packages ==="
 echo ""
-sudo --askpass npm update -g
+sudo --askpass npm update -g --min-release-age=7
 
 
 echo ""

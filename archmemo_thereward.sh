@@ -303,6 +303,8 @@ opam install coq coq-mathcomp-ssreflect
 yay -S elan-lean
 elan toolchain install leanprover/lean4:stable
 
+go install github.com/suzuki-shunsuke/pinact/v3/cmd/pinact@latest
+
 # ------------------------------------------------------------------------------
 
 yay -S lightdm lightdm-gtk-greeter
