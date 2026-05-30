@@ -242,7 +242,7 @@ sudo npm install -g @fsouza/prettierd
 
 sudo npm install -g @vue/language-server @vue/typescript-plugin
 
-sudo npm install -g pyright
+yay -S pyrefly-bin
 
 yay -S python-flake8
 
