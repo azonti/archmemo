@@ -228,7 +228,7 @@ yay -S clang
 
 yay -S gopls
 
-go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/goimports@v0.45.0
 
 yay -S golangci-lint-bin
 
@@ -303,7 +303,7 @@ opam install coq coq-mathcomp-ssreflect
 yay -S elan-lean
 elan toolchain install leanprover/lean4:stable
 
-go install github.com/suzuki-shunsuke/pinact/v3/cmd/pinact@latest
+go install github.com/suzuki-shunsuke/pinact/v4/cmd/pinact@v4.0.0
 
 # ------------------------------------------------------------------------------
 

@@ -26,9 +26,9 @@ echo "=== Updating Go installs ==="
 echo ""
 GOINSTALLS=$(ls -1 ~/go/bin)
 for GOINSTALL in $GOINSTALLS; do
-    GOPACKAGE=$(cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^go install (.+\/$GOINSTALL)@latest$/\1/p")
+    GOPACKAGE=$(cat archmemo_$HOSTNAME.sh | sed -nE -e "s/^go install (.+\/$GOINSTALL)@(.+)$/\1@\2/p")
     echo "Updating Go install $GOINSTALL (package $GOPACKAGE)"
-    go install "$GOPACKAGE@latest"
+    go install "$GOPACKAGE"
 done
 
 echo ""
