@@ -317,7 +317,7 @@ opam install coq coq-mathcomp-ssreflect
 yay -S elan-lean
 elan toolchain install leanprover/lean4:stable
 
-go install github.com/suzuki-shunsuke/pinact/v4/cmd/pinact@v4.0.0
+go install github.com/suzuki-shunsuke/pinact/v4/cmd/pinact@v4.1.0
 
 # ------------------------------------------------------------------------------
 
