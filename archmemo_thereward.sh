@@ -380,7 +380,7 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-switch-re
 yay -S wireshark-qt
 sudo gpasswd -a azon wireshark
 
-yay -S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
+yay -S virtualbox virtualbox-host-dkms virtualbox-guest-iso
 sudo gpasswd -a azon vboxusers
 
 yay -S vmware-workstation
