@@ -160,7 +160,6 @@ yay -S networkmanager-l2tp strongswan
 yay -S networkmanager-openvpn
 
 sudo sed -i -E -e "s/#(DNSSEC=no)/\1/" /etc/systemd/resolved.conf
-# edit /etc/NetworkManager/conf.d
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 sudo systemctl enable systemd-resolved
 
