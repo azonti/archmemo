@@ -180,6 +180,7 @@ yay -S go
 # edit ~/.profile.d
 
 yay -S npm
+# edit /etc/npmrc
 
 yay -S bun
 
