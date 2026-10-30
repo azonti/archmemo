@@ -266,7 +266,7 @@ yay -S iftop
 
 yay -S lshw
 
-yay -S gnu-netcat
+yay -S openbsd-netcat
 
 yay -S bind
 
@@ -418,7 +418,7 @@ yay -S gimp
 yay -S eclipse-java-bin
 # Eclipse configuration
 
-yay -S intellij-idea-community-edition
+yay -S intellij-idea-oss
 # IntelliJ IDEA configuration
 
 # Android Studio configuration
